@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>虚函数详解 | 小熊出击</title><meta name="keywords" content="C++"><meta name="author" content="小熊٩(๑•̀ω•́๑)۶"><meta name="copyright" content="小熊٩(๑•̀ω•́๑)۶"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、多态与重载1、多态的概念面向对象的语言有三大特性：封装、继承和多态。虚函数作为多态的实现方式，重要性毋庸置疑。 多态指给予不同的对象会引发不同的动作（一个接口，多种方法）。其实现更简单地来说，就是“在用父类指针调用函数时，实际调用的是指针指向的实际类型（子类）的成员函数”。多态性使得程序调用的函数是在运行时动态确定，而不是在编译器静态确定。 2、重载–编译期多态的体现重载，是指在一个类中的同名">
+<meta property="og:type" content="article">
+<meta property="og:title" content="虚函数详解">
+<meta property="og:url" content="http://example.com/2022/04/28/%E8%99%9A%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="小熊出击">
+<meta property="og:description" content="一、多态与重载1、多态的概念面向对象的语言有三大特性：封装、继承和多态。虚函数作为多态的实现方式，重要性毋庸置疑。 多态指给予不同的对象会引发不同的动作（一个接口，多种方法）。其实现更简单地来说，就是“在用父类指针调用函数时，实际调用的是指针指向的实际类型（子类）的成员函数”。多态性使得程序调用的函数是在运行时动态确定，而不是在编译器静态确定。 2、重载–编译期多态的体现重载，是指在一个类中的同名">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)">
+<meta property="article:published_time" content="2022-04-28T02:01:30.000Z">
+<meta property="article:modified_time" content="2022-06-22T08:06:59.323Z">
+<meta property="article:author" content="小熊٩(๑•̀ω•́๑)۶">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/04/28/%E8%99%9A%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '虚函数详解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-22 16:06:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/ava.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">93</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小熊出击</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">虚函数详解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-28T02:01:30.000Z" title="发表于 2022-04-28 10:01:30">2022-04-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-22T08:06:59.323Z" title="更新于 2022-06-22 16:06:59">2022-06-22</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="虚函数详解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="一、多态与重载"><a href="#一、多态与重载" class="headerlink" title="一、多态与重载"></a>一、多态与重载</h2><h3 id="1、多态的概念"><a href="#1、多态的概念" class="headerlink" title="1、多态的概念"></a>1、多态的概念</h3><p>面向对象的语言有三大特性：封装、继承和多态。虚函数作为多态的实现方式，重要性毋庸置疑。</p>
+<p>多态指给予不同的对象会引发不同的动作（一个接口，多种方法）。其实现更简单地来说，就是“在用父类指针调用函数时，实际调用的是指针指向的实际类型（子类）的成员函数”。多态性使得程序调用的函数是在运行时动态确定，而不是在编译器静态确定。</p>
+<h3 id="2、重载–编译期多态的体现"><a href="#2、重载–编译期多态的体现" class="headerlink" title="2、重载–编译期多态的体现"></a>2、重载–编译期多态的体现</h3><p>重载，是指在一个类中的同名不同参的函数调用，这样的方法调用是在编译器确定的。</p>
+<h3 id="3、虚函数–运行期多态的体现"><a href="#3、虚函数–运行期多态的体现" class="headerlink" title="3、虚函数–运行期多态的体现"></a>3、虚函数–运行期多态的体现</h3><p>运行期多态发生的三个条件：继承关系、虚函数覆盖、父类指针或引用指向子类对象。</p>
+<h2 id="二、虚函数实例"><a href="#二、虚函数实例" class="headerlink" title="二、虚函数实例"></a>二、虚函数实例</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">base</span>&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vir_func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;virtual function, this is class base&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;normal function, this is class base&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">A</span>:<span class="keyword">public</span> base&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vir_func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;virtual function, this is class A&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;normal function, this is class A&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">B</span>:<span class="keyword">public</span> base&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">vir_func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;virtual function, this is class B&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">()</span></span>&#123;cout&lt;&lt;<span class="string">&quot;normal function, this is class B&quot;</span>&lt;&lt;endl;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    base *Base = <span class="built_in">new</span>(base);</span><br><span class="line">    base *a = <span class="built_in">new</span>(A);</span><br><span class="line">    base *b = <span class="built_in">new</span>(B);</span><br><span class="line">    Base-&gt;<span class="built_in">func</span>();a-&gt;<span class="built_in">func</span>();b-&gt;<span class="built_in">func</span>();</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;#########################&quot;</span>&lt;&lt;endl;</span><br><span class="line">    Base-&gt;<span class="built_in">vir_func</span>();a-&gt;<span class="built_in">vir_func</span>();b-&gt;<span class="built_in">vir_func</span>();</span><br><span class="line">    cout&lt;&lt;<span class="string">&quot;#########################&quot;</span>&lt;&lt;endl;</span><br><span class="line">    ((A *)b)-&gt;<span class="built_in">vir_func</span>();((A *)b)-&gt;<span class="built_in">func</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">normal function, this is class base</span><br><span class="line">normal function, this is class base</span><br><span class="line">normal function, this is class base</span><br><span class="line">#########################</span><br><span class="line">virtual function, this is class base</span><br><span class="line">virtual function, this is class A</span><br><span class="line">virtual function, this is class B</span><br><span class="line">#########################</span><br><span class="line">virtual function, this is class B</span><br><span class="line">normal function, this is class A</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，当这三个指针调用func函数时，调用的都是基类base的函数。而调用虚函数vir_func时，调用的是指针指向的实际类型的函数。最后对b做强制类型转换，转换为A类型的指针，发现普通函数调用类A的函数，虚函数调用类B的函数。</p>
+<p>以上，我们可以得出结论：<strong>当使用类的指针调用成员函数时，普通函数由指针类型决定，而虚函数由指针指向的实际类型决定</strong></p>
+<p>虚函数的实现过程：通过对象内存中的vptr找到虚函数表vtbl，接着通过vtbl找到对应虚函数的实现区域并进行调用。</p>
+<h2 id="三、虚函数的实现（内存布局）"><a href="#三、虚函数的实现（内存布局）" class="headerlink" title="三、虚函数的实现（内存布局）"></a>三、虚函数的实现（内存布局）</h2><p>虚函数表中只存有一个虚函数的指针地址，不存放普通函数或是构造函数的指针地址。只要有虚函数，C++类都会存在这样的一张虚函数表。不管是普通函数亦或是纯虚函数，亦或是派生类中隐式声明的这些虚函数都会生成这张虚函数表。</p>
+<p>虚函数表创建的时间：在一个类构造的时候，创建这张虚函数表，而这个虚函数表是供整个类所共有的。虚函数表存储在对象最开始的位置。虚函数表其实就是函数指针的地址。函数调用的时候，通过函数指针指向的函数来调用函数。</p>
+<p>虚函数表存储在对象的最开始的位置，按照声明顺序存放在表中，父类的虚函数在子类的虚函数前面。如果有虚函数覆盖，覆盖的f()函数被放在虚表中原来父类虚函数的位置，没有被覆盖的函数依旧在原来的位置。</p>
+<p>如果有多重继承，每个父类都有自己的虚表（有几个基类就有几个虚函数表），子类的成员函数被放到了第一个父类的表中（按声明顺序来判断）。如果有虚函数覆盖，那么所有父类中的f()位置都会被替换成子类的函数指针。</p>
+<h2 id="四、虚函数的相关问题"><a href="#四、虚函数的相关问题" class="headerlink" title="四、虚函数的相关问题"></a>四、虚函数的相关问题</h2><h3 id="1、构造函数为什么不能定义为虚函数？"><a href="#1、构造函数为什么不能定义为虚函数？" class="headerlink" title="1、构造函数为什么不能定义为虚函数？"></a>1、构造函数为什么不能定义为虚函数？</h3><p><strong>构造函数不能是虚函数</strong></p>
+<p>首先，我们已经知道虚函数的实现是通过对象内存中的vptr来实现的。而构造函数是用来实例化一个对象的，通俗来说就是为对象内存中的值做初始化操作。那么在构造函数完成之前，vptr是没有值的，也就无法通过vptr找到作为虚函数的构造函数所在代码区。</p>
+<h3 id="2、析构函数为什么要定义为虚函数？"><a href="#2、析构函数为什么要定义为虚函数？" class="headerlink" title="2、析构函数为什么要定义为虚函数？"></a>2、析构函数为什么要定义为虚函数？</h3><p><strong>析构函数可以是虚函数且推荐最好设置为虚函数。</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">B</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">B</span>() &#123; <span class="built_in">printf</span>(<span class="string">&quot;B()\n&quot;</span>); &#125;</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">B</span>() &#123; <span class="built_in">printf</span>(<span class="string">&quot;~B()\n&quot;</span>); &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> m_b;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> <span class="title class_">D</span> : <span class="keyword">public</span> B</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">D</span>() &#123; <span class="built_in">printf</span>(<span class="string">&quot;D()\n&quot;</span>); &#125;</span><br><span class="line">    ~<span class="built_in">D</span>() &#123; <span class="built_in">printf</span>(<span class="string">&quot;~D()\n&quot;</span>); &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> m_d;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    B* pB = <span class="keyword">new</span> <span class="built_in">D</span>();</span><br><span class="line">    <span class="keyword">delete</span> pB;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">B&lt;&gt;</span><br><span class="line">D&lt;&gt;</span><br><span class="line">~D&lt;&gt;</span><br><span class="line">~B&lt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>C++中有这样的约束：执行子类构造函数之前一定会执行父类的构造函数；同理，执行子类的析构函数后，一定会执行父类的析构函数，这也是为什么建议析构函数写成虚函数的原因。</p>
+<p>如果析构函数不是虚函数，那么delete(a)时，调用的将是基类base的析构函数。而继承时派生类通常会在基类的基础上定义自己的成员，此时我们当然是希望可以调用派生类的析构函数对新定义的成员也进行析构了。</p>
+<h3 id="3、如何取验证虚函数表的存在？"><a href="#3、如何取验证虚函数表的存在？" class="headerlink" title="3、如何取验证虚函数表的存在？"></a>3、如何取验证虚函数表的存在？</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span><span class="params">(*Fun)</span><span class="params">(<span class="type">void</span>)</span></span>;</span><br><span class="line"><span class="comment">// 取类的一个实例</span></span><br><span class="line">Base b;</span><br><span class="line">Fun pFun = <span class="literal">NULL</span>;</span><br><span class="line"><span class="comment">// 把&amp;b转成int ，取得虚函数表的地址</span></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;虚函数表地址：&quot;</span> &lt;&lt; (<span class="type">int</span>*)(&amp;b) &lt;&lt; endl;</span><br><span class="line"><span class="comment">// 再次取址就可以得到第一个虚函数的地址了</span></span><br><span class="line">cout &lt;&lt; <span class="string">&quot;虚函数表 — 第一个函数地址：&quot;</span> &lt;&lt; (<span class="type">int</span>*)*(<span class="type">int</span>*)(&amp;b) &lt;&lt; endl;</span><br><span class="line">pFun = (Fun)*((<span class="type">int</span>*)*(<span class="type">int</span>*)(&amp;b));</span><br><span class="line"><span class="built_in">pFun</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、纯虚函数"><a href="#4、纯虚函数" class="headerlink" title="4、纯虚函数"></a>4、纯虚函数</h2><p>纯虚函数：不能实例化对象，可以做指针和引用，拥有纯虚函数的类是抽象类。</p>
+<p>作用：在基类中为其派生类保留一个函数的名字，以便派生类根据需要对他进行定义。如果在基类中没有保留函数名字，则无法实现多态性。</p>
+<p>声明格式：virtual  类型  函数名(参数列表）&#x3D; 0</p>
+<p>（1）纯虚函数没有函数体；<br>（2）最后面的“&#x3D;0”并不表示函数返回值为0，它只起形式上的作用，告诉编译系统“这是虚函数”；<br>（3）这是一个声明语句，最后有分号。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">bark</span><span class="params">()</span> </span>= <span class="number">0</span>;  <span class="comment">//声明为纯虚函数</span></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">小熊٩(๑•̀ω•́๑)۶</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/04/28/%E8%99%9A%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/">http://example.com/2022/04/28/%E8%99%9A%E5%87%BD%E6%95%B0%E8%AF%A6%E8%A7%A3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">小熊出击</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C/">C++</a></div><div class="post_share"><div class="social-share" data-image="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/02/Java%E5%AF%B9%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F/"><img class="prev-cover" src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java对字符串排序</div></div></a></div><div class="next-post pull-right"><a href="/2022/04/25/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><img class="next-cover" src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">java设计模式</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/05/18/C++%20Tricks/" title="C++ Tricks"><img class="cover" src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-18</div><div class="title">C++ Tricks</div></div></a></div><div><a href="/2022/04/14/C++STL/" title="C++ STL Stack Queue Deque PriorityQueue Pair"><img class="cover" src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-14</div><div class="title">C++ STL Stack Queue Deque PriorityQueue Pair</div></div></a></div><div><a href="/2022/04/14/C++sort/" title="C++ sort"><img class="cover" src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-14</div><div class="title">C++ sort</div></div></a></div><div><a href="/2022/05/14/C++explicit/" title="C++ explicit"><img class="cover" src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-14</div><div class="title">C++ explicit</div></div></a></div><div><a href="/2022/04/20/C++%20Map/" title="C++ Map"><img class="cover" src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-20</div><div class="title">C++ Map</div></div></a></div><div><a href="/2022/05/27/C++template/" title="C++template"><img class="cover" src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-27</div><div class="title">C++template</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/ava.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小熊٩(๑•̀ω•́๑)۶</div><div class="author-info__description">看好！小熊出击！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">93</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%A4%9A%E6%80%81%E4%B8%8E%E9%87%8D%E8%BD%BD"><span class="toc-number">1.</span> <span class="toc-text">一、多态与重载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%A4%9A%E6%80%81%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">1、多态的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E9%87%8D%E8%BD%BD%E2%80%93%E7%BC%96%E8%AF%91%E6%9C%9F%E5%A4%9A%E6%80%81%E7%9A%84%E4%BD%93%E7%8E%B0"><span class="toc-number">1.2.</span> <span class="toc-text">2、重载–编译期多态的体现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E8%99%9A%E5%87%BD%E6%95%B0%E2%80%93%E8%BF%90%E8%A1%8C%E6%9C%9F%E5%A4%9A%E6%80%81%E7%9A%84%E4%BD%93%E7%8E%B0"><span class="toc-number">1.3.</span> <span class="toc-text">3、虚函数–运行期多态的体现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%99%9A%E5%87%BD%E6%95%B0%E5%AE%9E%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">二、虚函数实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%99%9A%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%88%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">三、虚函数的实现（内存布局）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%99%9A%E5%87%BD%E6%95%B0%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">四、虚函数的相关问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E5%AE%9A%E4%B9%89%E4%B8%BA%E8%99%9A%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="toc-number">4.1.</span> <span class="toc-text">1、构造函数为什么不能定义为虚函数？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%9A%E4%B9%89%E4%B8%BA%E8%99%9A%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="toc-number">4.2.</span> <span class="toc-text">2、析构函数为什么要定义为虚函数？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%A6%82%E4%BD%95%E5%8F%96%E9%AA%8C%E8%AF%81%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8%E7%9A%84%E5%AD%98%E5%9C%A8%EF%BC%9F"><span class="toc-number">4.3.</span> <span class="toc-text">3、如何取验证虚函数表的存在？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">4、纯虚函数</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/06/29/Vue%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="Vue中的一些说明及注意事项"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue中的一些说明及注意事项"/></a><div class="content"><a class="title" href="/2022/06/29/Vue%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="Vue中的一些说明及注意事项">Vue中的一些说明及注意事项</a><time datetime="2022-06-29T08:28:05.000Z" title="发表于 2022-06-29 16:28:05">2022-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/29/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Vue生命周期"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue生命周期"/></a><div class="content"><a class="title" href="/2022/06/29/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Vue生命周期">Vue生命周期</a><time datetime="2022-06-29T07:58:50.000Z" title="发表于 2022-06-29 15:58:50">2022-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/28/JAVA-VO-PO-POJO%E7%AD%89%E7%AD%89%E7%9A%84%E5%8C%BA%E5%88%AB/" title="JAVA VO/PO/POJO等等的区别"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JAVA VO/PO/POJO等等的区别"/></a><div class="content"><a class="title" href="/2022/06/28/JAVA-VO-PO-POJO%E7%AD%89%E7%AD%89%E7%9A%84%E5%8C%BA%E5%88%AB/" title="JAVA VO/PO/POJO等等的区别">JAVA VO/PO/POJO等等的区别</a><time datetime="2022-06-28T02:45:32.000Z" title="发表于 2022-06-28 10:45:32">2022-06-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/18/%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%E7%9A%84%E7%89%B9%E7%82%B9%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="内联函数的特点及注意事项"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="内联函数的特点及注意事项"/></a><div class="content"><a class="title" href="/2022/06/18/%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%E7%9A%84%E7%89%B9%E7%82%B9%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="内联函数的特点及注意事项">内联函数的特点及注意事项</a><time datetime="2022-06-18T00:57:44.000Z" title="发表于 2022-06-18 08:57:44">2022-06-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/18/C++%E9%87%8C%E9%9D%A2%E7%9A%84%E9%87%8D%E5%86%99%E5%B8%A6%E6%9C%89%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%E7%9A%84%E8%99%9A%E5%87%BD%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="C++里面的重写带有默认参数的虚函数的问题"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++里面的重写带有默认参数的虚函数的问题"/></a><div class="content"><a class="title" href="/2022/06/18/C++%E9%87%8C%E9%9D%A2%E7%9A%84%E9%87%8D%E5%86%99%E5%B8%A6%E6%9C%89%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%E7%9A%84%E8%99%9A%E5%87%BD%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="C++里面的重写带有默认参数的虚函数的问题">C++里面的重写带有默认参数的虚函数的问题</a><time datetime="2022-06-18T00:39:47.000Z" title="发表于 2022-06-18 08:39:47">2022-06-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By 小熊٩(๑•̀ω•́๑)۶</div><div class="footer_custom_text">请问是好小熊还是坏小熊？</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Am7x08ZeYD9VdolOddY6z2ic-gzGzoHsz',
+      appKey: '2IepgYqPE8wpNECbM8DqaDe5',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

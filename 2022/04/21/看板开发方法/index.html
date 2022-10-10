@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>看板开发方法 | 小熊出击</title><meta name="keywords" content="软件开发"><meta name="author" content="小熊٩(๑•̀ω•́๑)۶"><meta name="copyright" content="小熊٩(๑•̀ω•́๑)۶"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="看板开发方法是近年来（2013年）最热门的敏捷和精益开发方法。越来越多的案例表明，它能够改善协作、优化管理、显著提高交付速度、质量和灵活性。看板开发方法的规则简单，但其有效实施依赖于对原理的理解、对原则的坚持和实践的应变。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="看板开发方法">
+<meta property="og:url" content="http://example.com/2022/04/21/%E7%9C%8B%E6%9D%BF%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="小熊出击">
+<meta property="og:description" content="看板开发方法是近年来（2013年）最热门的敏捷和精益开发方法。越来越多的案例表明，它能够改善协作、优化管理、显著提高交付速度、质量和灵活性。看板开发方法的规则简单，但其有效实施依赖于对原理的理解、对原则的坚持和实践的应变。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)">
+<meta property="article:published_time" content="2022-04-21T08:03:58.000Z">
+<meta property="article:modified_time" content="2022-04-21T08:42:53.224Z">
+<meta property="article:author" content="小熊٩(๑•̀ω•́๑)۶">
+<meta property="article:tag" content="软件开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/04/21/%E7%9C%8B%E6%9D%BF%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '看板开发方法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-04-21 16:42:53'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/ava.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">93</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小熊出击</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">看板开发方法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-21T08:03:58.000Z" title="发表于 2022-04-21 16:03:58">2022-04-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-04-21T08:42:53.224Z" title="更新于 2022-04-21 16:42:53">2022-04-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="看板开发方法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>看板开发方法是近年来（2013年）最热门的敏捷和精益开发方法。越来越多的案例表明，它能够改善协作、优化管理、显著提高交付速度、质量和灵活性。看板开发方法的规则简单，但其有效实施依赖于对原理的理解、对原则的坚持和实践的应变。</p>
+<span id="more"></span>
+<h2 id="1-看板的原始含义"><a href="#1-看板的原始含义" class="headerlink" title="1.看板的原始含义"></a>1.看板的原始含义</h2><h3 id="原始定义"><a href="#原始定义" class="headerlink" title="原始定义"></a>原始定义</h3><p>看板源自精益制造，从丰田公司的事件中演化出来，要求准时化、自动化，提供高质量、低成本、快速响应的产品。<br>看板一词源自日文，本义是可视化卡片（硅谷（Silicon Valley）电视剧中即使用看板开发）。看板工具的实质是：后道工序在需要时，通过看板向前道工序发出信号——请告诉我需要数量的输入，前道工序只有得到看板后，才按需生产。看板信号由下游向上游传递，拉动上有的生产活动，时产品向下游移动。拉动的源头是最下游的客户价值，也就是客户订单或需求。</p>
+<h3 id="基于看板的拉动系统实现准时化"><a href="#基于看板的拉动系统实现准时化" class="headerlink" title="基于看板的拉动系统实现准时化"></a>基于看板的拉动系统实现准时化</h3><p>准时化又叫即时生产（Just in time - JIT）是丰田生产方式的一个支柱。看板形成拉动系统，各环节根据看板信息，尽在需要的时间生产需要的数量的必要产品。这带来身缠库存的降低，降低了成本，缩短了交付周期，提高了制造过程的灵活性。</p>
+<h2 id="2-精益产品开发"><a href="#2-精益产品开发" class="headerlink" title="2.精益产品开发"></a>2.精益产品开发</h2><h3 id="价值流动"><a href="#价值流动" class="headerlink" title="价值流动"></a>价值流动</h3><p><img src="https://static001.infoq.cn/resource/image/93/8b/93cc49843b45dd772627527c8423228b.png"></p>
+<p>图中每个卡片代表一个价值项，如：功能需求、缺陷、技术概念验证等。他们所在的列，表示其所处的阶段。这些价值项，每经过一个阶段（图中的列）都会产生新信息，价值得以增加。</p>
+<p>价值流动可能会被阻碍，比如，编码因对第三方接口错误而无法进展；测试因没有设备而停止。图中，红色卡片是对问题和阻碍地可视化。标识阻碍因素并推动其解决，促进价值流动。</p>
+<p>最终限制系统端到端流量是系统瓶颈处的流量，改善端到端地价值流，必须从解决瓶颈问题开始。发现看板墙上的瓶颈并不困难，找到最长的队列就可以了。上图最长的队列出现在测试处，不难看出，测试是价值流动的瓶颈。</p>
+<p>价值、价值流，以及问题和瓶颈的可视化，是改善价值的起始，也是其他看板实践的基础。</p>
+<h3 id="显式化流程规则"><a href="#显式化流程规则" class="headerlink" title="显式化流程规则"></a>显式化流程规则</h3><p>显式化流程规则，是指明确定义和沟通团队所遵循的流程规则。价值项的“流传规则”是看板开发方法中最典型的流程规则。它定义了一个价值项从一个阶段进入下一个阶段所必须达到的标准。下图中，给出了某团队其中一项流传规则的实例，定义了从分析阶段进入开发阶段所必须达到的条件。</p>
+<p><img src="https://static001.infoq.cn/resource/image/5b/5f/5b9816d08795bb9f15915fae65a8325f.png"></p>
+<p>“流传规则”的显式化，让质量内建于各个阶段——这与精益制造中内建质量的思想是一致的。除各个“流转规则”外，其他重要的流程规则也可以或者需要被显式化，如，团队的写作规则、优先级的定义规则等。</p>
+<p>流程显式化更重要的意义在于，它是“持续改进”的出发点和结果的载体。没有显式化的规则作为依据，讨论改进就没有基础，而变得主观和随意。改进的结果通常也需要落实到显式的流程规则当中，让改进稳步进行，避免低效的反复。显式化规则不是为了限定团队的工作方式，而是为了帮助团队更好地改进。</p>
+<h3 id="限制在制品数量"><a href="#限制在制品数量" class="headerlink" title="限制在制品数量"></a>限制在制品数量</h3><p>限制在制品数量是看板开发的核心机制。如下图所示，列标题右边的数字标识了该阶段允许的在制品的最大数目（进行中和完成的价值项的和）。在制品数量小于这个数字时，才可以从前一阶段拉入新的工作。图中，分析阶段的在制品限制数目时3，而实际在制品数目时2，可以拉入新的工作。</p>
+<p><img src="https://static001.infoq.cn/resource/image/34/56/3466798c64aad3bea321ded453853356.png"></p>
+<p>限制在制品数量形成一个与精益制造类似的拉动机制。一个环节有空余的能力（在制品数量未达上限）时，从上游拉入新的工作，拉动的源头时最下游的交付或客户需求。与产品制造类似，通过拉动系统可以加速价值流动和暴露问题。</p>
+<h3 id="度量和管理流动"><a href="#度量和管理流动" class="headerlink" title="度量和管理流动"></a>度量和管理流动</h3><p>快速、顺畅的价值流动是看板开发的目标。快速流动带来的价值产出和快速反馈，它对业务成功至关重要：顺畅流动，意味着稳定和可预测的价值交付能力，这与流动的绝对速度同等重要。</p>
+<p><img src="https://static001.infoq.cn/resource/image/30/fc/30ae4cdb21c2d518fabdf6563e37f9fc.png"></p>
+<p>度量为改善价值流动提供方向参考，同时为改善的结果提供反馈。看板开发方法没有定义特定的度量方法，累积流量图是实际应用较为普遍的一种。图 ㈨是一个典型的累积流量图，左面的斜线是累积已经开始的价值项（如用户需求）数目，右面斜线是累积完成价值项的数目。两条斜线的垂直距离表示某个时刻已经开始但还没有完成的价值项数目，也就是在制品的总计数量。两条斜线的水平间距表示价值项从开始到完成的周期时间，也就是从概念到交付的响应时间，它是价值流动效率的一个重要衡量。斜线的斜率反应的是价值交付的速率，也就是每周可以交付的价值项数量。</p>
+<p><img src="https://static001.infoq.cn/resource/image/54/01/5414c088c5c0225968b9ca5b877cfa01.png"></p>
+<p>累积流量是一个综合的价值流度量方法，可以通过它得到不同维度的信息。例如，我们设想限制在制品的数目，可以缩短周期时间、而对交付速率影响有限。但实际效果如何还要通过事实来检验，通过实验和度量，图中的数据基本验证了这一假设，让改进更有方向，结果更可衡量。同样的数据有不同的呈现方式，图 ㈩基于相同的数据，它突出了在制品数目和周期时间的变化趋势，以及两者的关系。从图中可以看出，周期时间的降低略滞后于在制品数量的降低，这符合精益理论，因为只有在积累的队列被处理完后，对交付周期的改进才能够显现出来。而图 11 反应的是系统流量（每周交付价值的数量）的变化趋势，为改进提供了信心。</p>
+<h3 id="协同改进"><a href="#协同改进" class="headerlink" title="协同改进"></a>协同改进</h3><p>应用可视化、限制在制品数量、以及价值流度量，能够暴露产品开发中的问题和瓶颈。但发现问题还不够，重要的是如何去解决它们，对此看板开发方法给出了两个建议——团队协作和应用科学方法和模型。限制在制品数目本身就能够激发协作，例如在前面图 ㈧的看板墙，可能会出现以下的顺序场景</p>
+<ol>
+<li><p>测试遇到问题 (如输入质量太差) 而被阻塞 ，在制品数量达到上限</p>
+</li>
+<li><p>因在制品数量达到上限，根据规则，测试不能从上游（实现）拉入更多的工作</p>
+</li>
+<li><p>实现阶段已完成的工作无法进入下游测试环节，实现阶段的在制品数量很快也达到上限</p>
+</li>
+<li><p>实现要想开始更多的工作，就必须关注下游的问题，并做出反应，如提高本环节的输出质量，或者是给予帮助</p>
+</li>
+<li><p>实现和测试的协作使价值流动更加顺畅</p>
+</li>
+</ol>
+<p><img src="https://static001.infoq.cn/resource/image/d4/47/d44efe50020a858d032e7d64fe427947.png"></p>
+<p>图是”kanban – Successful Evolutionary Change for Your Technology Business”一书的封面插图，它反映了发生在看板墙前面的协同改进。看板开发方法的基本假设是：产品开发的目标不是单个环节效率的最大化，而是端到端价值流的提升。看板通过拉动机制暴露了限制价值流动的瓶颈，并激发团队协作，改善价值流动。</p>
+<p>解决瓶颈问题的方案可能在瓶颈处，如临时加班、分配更多资源、或相邻环节的支持等。但很多时候解决瓶颈问题的方案在别处，例如提高瓶颈之前环节的输出质量，调整职责分配，甚至是重新设计工作流。</p>
+<p>对于偶然出现的问题，只需要临时性解决方案。如突发性高负荷，可以通过暂时的相互支持解决。而对于系统性问题，如持续的负荷不均衡，则需要长期的方案和更加系统和科学的模型指导，如系统思考、精益思想、排队理论等，这些模型本身不属于看板方法的一部分，但它们让长期的改进有章可循，以后的文章，我将中深入地探讨其中的一些模型。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>看板的实施正是从组织流程现状出发，首先可视化实际工作流并显式化流程；在此基础上，限制在制品数量形成拉动系统以暴露系统问题和瓶颈，度量价值流动以发现改进机会；并通过团队的协作，不断改进和演化出合适的流程、方法，实现一个高效、顺畅的产品开发价值流。</p>
+<p>适应组织的具体情况，和发现合适的变革路径，这两点是敏捷实施的最大困难，看板给出了被证明可行的方案。这可能是看板能够在国外社区迅速推广并成功运用的原因，而在国内，看板这方面的价值还远未被认识和发掘。</p>
+<p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/kanban-development-method">https://www.infoq.cn/article/kanban-development-method</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">小熊٩(๑•̀ω•́๑)۶</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/04/21/%E7%9C%8B%E6%9D%BF%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95/">http://example.com/2022/04/21/%E7%9C%8B%E6%9D%BF%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">小熊出击</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/">软件开发</a></div><div class="post_share"><div class="social-share" data-image="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/04/21/Spring%E6%95%99%E7%A8%8B%20Day1/"><img class="prev-cover" src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Spring教程 Day1</div></div></a></div><div class="next-post pull-right"><a href="/2022/04/20/C++%20Map/"><img class="next-cover" src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C++ Map</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/ava.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小熊٩(๑•̀ω•́๑)۶</div><div class="author-info__description">看好！小熊出击！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">93</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%9C%8B%E6%9D%BF%E7%9A%84%E5%8E%9F%E5%A7%8B%E5%90%AB%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">1.看板的原始含义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text">原始定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E7%9C%8B%E6%9D%BF%E7%9A%84%E6%8B%89%E5%8A%A8%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0%E5%87%86%E6%97%B6%E5%8C%96"><span class="toc-number">1.2.</span> <span class="toc-text">基于看板的拉动系统实现准时化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%B2%BE%E7%9B%8A%E4%BA%A7%E5%93%81%E5%BC%80%E5%8F%91"><span class="toc-number">2.</span> <span class="toc-text">2.精益产品开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%B7%E5%80%BC%E6%B5%81%E5%8A%A8"><span class="toc-number">2.1.</span> <span class="toc-text">价值流动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E5%BC%8F%E5%8C%96%E6%B5%81%E7%A8%8B%E8%A7%84%E5%88%99"><span class="toc-number">2.2.</span> <span class="toc-text">显式化流程规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E5%88%B6%E5%9C%A8%E5%88%B6%E5%93%81%E6%95%B0%E9%87%8F"><span class="toc-number">2.3.</span> <span class="toc-text">限制在制品数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%A6%E9%87%8F%E5%92%8C%E7%AE%A1%E7%90%86%E6%B5%81%E5%8A%A8"><span class="toc-number">2.4.</span> <span class="toc-text">度量和管理流动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8F%E5%90%8C%E6%94%B9%E8%BF%9B"><span class="toc-number">2.5.</span> <span class="toc-text">协同改进</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/06/29/Vue%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="Vue中的一些说明及注意事项"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue中的一些说明及注意事项"/></a><div class="content"><a class="title" href="/2022/06/29/Vue%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="Vue中的一些说明及注意事项">Vue中的一些说明及注意事项</a><time datetime="2022-06-29T08:28:05.000Z" title="发表于 2022-06-29 16:28:05">2022-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/29/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Vue生命周期"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue生命周期"/></a><div class="content"><a class="title" href="/2022/06/29/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Vue生命周期">Vue生命周期</a><time datetime="2022-06-29T07:58:50.000Z" title="发表于 2022-06-29 15:58:50">2022-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/28/JAVA-VO-PO-POJO%E7%AD%89%E7%AD%89%E7%9A%84%E5%8C%BA%E5%88%AB/" title="JAVA VO/PO/POJO等等的区别"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JAVA VO/PO/POJO等等的区别"/></a><div class="content"><a class="title" href="/2022/06/28/JAVA-VO-PO-POJO%E7%AD%89%E7%AD%89%E7%9A%84%E5%8C%BA%E5%88%AB/" title="JAVA VO/PO/POJO等等的区别">JAVA VO/PO/POJO等等的区别</a><time datetime="2022-06-28T02:45:32.000Z" title="发表于 2022-06-28 10:45:32">2022-06-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/18/%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%E7%9A%84%E7%89%B9%E7%82%B9%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="内联函数的特点及注意事项"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="内联函数的特点及注意事项"/></a><div class="content"><a class="title" href="/2022/06/18/%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%E7%9A%84%E7%89%B9%E7%82%B9%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="内联函数的特点及注意事项">内联函数的特点及注意事项</a><time datetime="2022-06-18T00:57:44.000Z" title="发表于 2022-06-18 08:57:44">2022-06-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/18/C++%E9%87%8C%E9%9D%A2%E7%9A%84%E9%87%8D%E5%86%99%E5%B8%A6%E6%9C%89%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%E7%9A%84%E8%99%9A%E5%87%BD%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="C++里面的重写带有默认参数的虚函数的问题"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++里面的重写带有默认参数的虚函数的问题"/></a><div class="content"><a class="title" href="/2022/06/18/C++%E9%87%8C%E9%9D%A2%E7%9A%84%E9%87%8D%E5%86%99%E5%B8%A6%E6%9C%89%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%E7%9A%84%E8%99%9A%E5%87%BD%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="C++里面的重写带有默认参数的虚函数的问题">C++里面的重写带有默认参数的虚函数的问题</a><time datetime="2022-06-18T00:39:47.000Z" title="发表于 2022-06-18 08:39:47">2022-06-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By 小熊٩(๑•̀ω•́๑)۶</div><div class="footer_custom_text">请问是好小熊还是坏小熊？</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Am7x08ZeYD9VdolOddY6z2ic-gzGzoHsz',
+      appKey: '2IepgYqPE8wpNECbM8DqaDe5',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

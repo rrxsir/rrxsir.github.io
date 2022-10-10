@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>聚合与组合 | 小熊出击</title><meta name="keywords" content="Java"><meta name="author" content="小熊٩(๑•̀ω•́๑)۶"><meta name="copyright" content="小熊٩(๑•̀ω•́๑)۶"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="聚合和组合聚合（整体和部分可以分开）聚合关系表示一个整体与部分的关系，通常在定义一个整体类后，再去分析这个整体类的租场结构，从而找出一些成员类，该整体类和成员类之间就形成了聚合关系。 在聚合关系中，成员类是整体类的一部分，即成员对象是整体对象的一部分，但是成员对象可以脱离整体对象独立存在。  聚合关系用于表示实体对象之间的关系，表示整体由部分构成的语义；例如一个部门由多个员工组成。 与组合关系不同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="聚合与组合">
+<meta property="og:url" content="http://example.com/2022/06/15/%E8%81%9A%E5%90%88%E4%B8%8E%E7%BB%84%E5%90%88/index.html">
+<meta property="og:site_name" content="小熊出击">
+<meta property="og:description" content="聚合和组合聚合（整体和部分可以分开）聚合关系表示一个整体与部分的关系，通常在定义一个整体类后，再去分析这个整体类的租场结构，从而找出一些成员类，该整体类和成员类之间就形成了聚合关系。 在聚合关系中，成员类是整体类的一部分，即成员对象是整体对象的一部分，但是成员对象可以脱离整体对象独立存在。  聚合关系用于表示实体对象之间的关系，表示整体由部分构成的语义；例如一个部门由多个员工组成。 与组合关系不同">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)">
+<meta property="article:published_time" content="2022-06-15T01:56:46.000Z">
+<meta property="article:modified_time" content="2022-06-15T01:59:10.995Z">
+<meta property="article:author" content="小熊٩(๑•̀ω•́๑)۶">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/06/15/%E8%81%9A%E5%90%88%E4%B8%8E%E7%BB%84%E5%90%88/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '聚合与组合',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-15 09:59:10'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/ava.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">93</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小熊出击</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">聚合与组合</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-15T01:56:46.000Z" title="发表于 2022-06-15 09:56:46">2022-06-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-15T01:59:10.995Z" title="更新于 2022-06-15 09:59:10">2022-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="聚合与组合"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="聚合和组合"><a href="#聚合和组合" class="headerlink" title="聚合和组合"></a>聚合和组合</h1><h2 id="聚合（整体和部分可以分开）"><a href="#聚合（整体和部分可以分开）" class="headerlink" title="聚合（整体和部分可以分开）"></a>聚合（整体和部分可以分开）</h2><p>聚合关系表示一个整体与部分的关系，通常在定义一个整体类后，再去分析这个整体类的租场结构，从而找出一些成员类，该整体类和成员类之间就形成了聚合关系。</p>
+<p>在聚合关系中，成员类是整体类的一部分，即成员对象是整体对象的一部分，但是成员对象可以脱离整体对象独立存在。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191229184245573.png"></p>
+<p>聚合关系用于表示实体对象之间的关系，表示整体由部分构成的语义；例如一个部门由多个员工组成。</p>
+<p>与组合关系不同的是，整体和部分不是强依赖的，即使整体不存在了，部分仍然存在；例如， 部门撤销了，人员不会消失，他们依然存在。</p>
+<p>实例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">People</span>&#123;</span><br><span class="line">    Car car;</span><br><span class="line">    House house; </span><br><span class="line">    <span class="comment">//聚合关系中作为成员变量的类一般使用set方法赋值</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="type">void</span> <span class="title">setCar</span><span class="params">(Car car)</span></span>&#123;</span><br><span class="line">        This.car = car;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="type">void</span> <span class="title">setHouse</span><span class="params">(House house)</span></span>&#123;</span><br><span class="line">        This.house = house;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="type">void</span> <span class="title">driver</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.<span class="built_in">println</span>(“车的型号：”+car.<span class="built_in">getType</span>());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="type">void</span> <span class="title">sleep</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.<span class="built_in">println</span>(“我在房子里睡觉：”+house.<span class="built_in">getAddress</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="组合（整体和部分不能分开）"><a href="#组合（整体和部分不能分开）" class="headerlink" title="组合（整体和部分不能分开）"></a>组合（整体和部分不能分开）</h2><p>组合关系表示类之间整体和部分的关系，但是组合关系中部分和整体具有统一的生存期。一旦整体对象不存在，部分对象也将不存在，部分对象与整体对象之 间具有同生共死的关系。</p>
+<p>在组合关系中，成员类是整体类的一部分，而且整体类可以控制成员类的生命周期，即成员类的存在依赖于整体类。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191229184852279.png"></p>
+<p>与聚合关系一样，组合关系同样表示整体由部分构成的语义；比如公司由多个部门组成。</p>
+<p>但组合关系是一种强依赖的特殊聚合关系，如果整体不存在了，则部分也不存在了；例如， 公司不存在了，部门也将不存在了。</p>
+<p>实例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Public <span class="keyword">class</span> <span class="title class_">People</span>&#123;</span><br><span class="line">    Soul soul;</span><br><span class="line">    Body body; </span><br><span class="line">    <span class="comment">//组合关系中的成员变量一般会在构造方法中赋值</span></span><br><span class="line">     <span class="function">Public <span class="title">People</span><span class="params">(Soul soul, Body body)</span></span>&#123; </span><br><span class="line">        This.soul = soul;</span><br><span class="line">        This.body = body;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function">Public <span class="type">void</span> <span class="title">study</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.<span class="built_in">println</span>(“学习要用灵魂”+soul.<span class="built_in">getName</span>());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">Public <span class="type">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.<span class="built_in">println</span>(“吃饭用身体：”+body.<span class="built_in">getName</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="两者区别"><a href="#两者区别" class="headerlink" title="两者区别"></a>两者区别</h2><p>1、依赖性区别</p>
+<p>聚合中的两种类（或实体）是可以单独存在的，不会相互影响；被关联的一方可以独立于关联一方，依赖性不强。</p>
+<p>相反，组合中的两个实体（或者类）是高度依赖于彼此的，它们之间会相互影响。</p>
+<p>2、关系类型的区别</p>
+<p>聚合代表了has-a关系，一种单向关系；组合代表了part-of关系。</p>
+<p>3、关联强度的不同</p>
+<p>聚合是一种弱关联关系；组合是一种强关联关系。</p>
+<p>4、生命周期的不同</p>
+<p>在聚合关系中的两个类（或实体）的生命周期是不同步；但，在组合关系中的两个类（或实体）的生命周期是同步的。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">小熊٩(๑•̀ω•́๑)۶</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/06/15/%E8%81%9A%E5%90%88%E4%B8%8E%E7%BB%84%E5%90%88/">http://example.com/2022/06/15/%E8%81%9A%E5%90%88%E4%B8%8E%E7%BB%84%E5%90%88/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">小熊出击</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a></div><div class="post_share"><div class="social-share" data-image="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/15/Java%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B/"><img class="prev-cover" src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java分层模型</div></div></a></div><div class="next-post pull-right"><a href="/2022/06/09/%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%92%8C%E6%8B%B7%E8%B4%9D%E8%B5%8B%E5%80%BC/"><img class="next-cover" src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">拷贝构造和拷贝赋值</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/ava.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小熊٩(๑•̀ω•́๑)۶</div><div class="author-info__description">看好！小熊出击！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">93</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E5%92%8C%E7%BB%84%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">聚合和组合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%9A%E5%90%88%EF%BC%88%E6%95%B4%E4%BD%93%E5%92%8C%E9%83%A8%E5%88%86%E5%8F%AF%E4%BB%A5%E5%88%86%E5%BC%80%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">聚合（整体和部分可以分开）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%90%88%EF%BC%88%E6%95%B4%E4%BD%93%E5%92%8C%E9%83%A8%E5%88%86%E4%B8%8D%E8%83%BD%E5%88%86%E5%BC%80%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">组合（整体和部分不能分开）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A4%E8%80%85%E5%8C%BA%E5%88%AB"><span class="toc-number">1.3.</span> <span class="toc-text">两者区别</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/06/29/Vue%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="Vue中的一些说明及注意事项"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue中的一些说明及注意事项"/></a><div class="content"><a class="title" href="/2022/06/29/Vue%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="Vue中的一些说明及注意事项">Vue中的一些说明及注意事项</a><time datetime="2022-06-29T08:28:05.000Z" title="发表于 2022-06-29 16:28:05">2022-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/29/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Vue生命周期"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue生命周期"/></a><div class="content"><a class="title" href="/2022/06/29/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Vue生命周期">Vue生命周期</a><time datetime="2022-06-29T07:58:50.000Z" title="发表于 2022-06-29 15:58:50">2022-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/28/JAVA-VO-PO-POJO%E7%AD%89%E7%AD%89%E7%9A%84%E5%8C%BA%E5%88%AB/" title="JAVA VO/PO/POJO等等的区别"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JAVA VO/PO/POJO等等的区别"/></a><div class="content"><a class="title" href="/2022/06/28/JAVA-VO-PO-POJO%E7%AD%89%E7%AD%89%E7%9A%84%E5%8C%BA%E5%88%AB/" title="JAVA VO/PO/POJO等等的区别">JAVA VO/PO/POJO等等的区别</a><time datetime="2022-06-28T02:45:32.000Z" title="发表于 2022-06-28 10:45:32">2022-06-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/18/%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%E7%9A%84%E7%89%B9%E7%82%B9%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="内联函数的特点及注意事项"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="内联函数的特点及注意事项"/></a><div class="content"><a class="title" href="/2022/06/18/%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%E7%9A%84%E7%89%B9%E7%82%B9%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="内联函数的特点及注意事项">内联函数的特点及注意事项</a><time datetime="2022-06-18T00:57:44.000Z" title="发表于 2022-06-18 08:57:44">2022-06-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/18/C++%E9%87%8C%E9%9D%A2%E7%9A%84%E9%87%8D%E5%86%99%E5%B8%A6%E6%9C%89%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%E7%9A%84%E8%99%9A%E5%87%BD%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="C++里面的重写带有默认参数的虚函数的问题"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C++里面的重写带有默认参数的虚函数的问题"/></a><div class="content"><a class="title" href="/2022/06/18/C++%E9%87%8C%E9%9D%A2%E7%9A%84%E9%87%8D%E5%86%99%E5%B8%A6%E6%9C%89%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%E7%9A%84%E8%99%9A%E5%87%BD%E6%95%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="C++里面的重写带有默认参数的虚函数的问题">C++里面的重写带有默认参数的虚函数的问题</a><time datetime="2022-06-18T00:39:47.000Z" title="发表于 2022-06-18 08:39:47">2022-06-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By 小熊٩(๑•̀ω•́๑)۶</div><div class="footer_custom_text">请问是好小熊还是坏小熊？</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Am7x08ZeYD9VdolOddY6z2ic-gzGzoHsz',
+      appKey: '2IepgYqPE8wpNECbM8DqaDe5',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
