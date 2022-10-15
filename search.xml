@@ -714,9 +714,9 @@
       
         <tags>
             
-            <tag> 软工二 </tag>
-            
             <tag> 面向对象 </tag>
+            
+            <tag> 软工二 </tag>
             
         </tags>
       
@@ -741,11 +741,11 @@
       
         <tags>
             
-            <tag> 软工二 </tag>
-            
             <tag> 面向对象 </tag>
             
             <tag> 模块化与信息隐藏 </tag>
+            
+            <tag> 软工二 </tag>
             
         </tags>
       
@@ -1797,6 +1797,12 @@
       
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="git更新本地代码"><a href="#git更新本地代码" class="headerlink" title="git更新本地代码"></a>git更新本地代码</h1><h2 id="1-本地代码未修改，只有master分支，直接更新"><a href="#1-本地代码未修改，只有master分支，直接更新" class="headerlink" title="1.本地代码未修改，只有master分支，直接更新"></a>1.本地代码未修改，只有master分支，直接更新</h2><p>git pull</p><p>前提是本地的代码没更改过。比如，你提交了代码到github后，随后别人也提交代码到github，然后你需要更新别人提交的代码到你本地，就可以直接使用该命令。假如你提交代码后再修改过本地的代码，就会产生冲突，直接使用该命令会失败。</p><h2 id="2-本地代码有修改，多分支。"><a href="#2-本地代码有修改，多分支。" class="headerlink" title="2.本地代码有修改，多分支。"></a>2.本地代码有修改，多分支。</h2><p>&#x2F;&#x2F;切换到master分支</p><p>git checkout master</p><p>&#x2F;&#x2F;更新master分支</p><p>git pull</p><p>&#x2F;&#x2F;切换到自己的分支isso</p><p>git checkout isso</p><p>&#x2F;&#x2F;把master分支合并到自己分支</p><p>git merge master</p><h2 id="3-本地代码有修改，只有master分支，直接覆盖本地代码。"><a href="#3-本地代码有修改，只有master分支，直接覆盖本地代码。" class="headerlink" title="3.本地代码有修改，只有master分支，直接覆盖本地代码。"></a>3.本地代码有修改，只有master分支，直接覆盖本地代码。</h2><p>&#x2F;&#x2F;重置索引和工作目录</p><p>git reset –hard</p><p>&#x2F;&#x2F;更新代码</p><p>git pull</p><h2 id="4-本地代码有修改，直接覆盖远程仓库代码"><a href="#4-本地代码有修改，直接覆盖远程仓库代码" class="headerlink" title="4.本地代码有修改，直接覆盖远程仓库代码"></a>4.本地代码有修改，直接覆盖远程仓库代码</h2><p>&#x2F;&#x2F;覆盖isso分支</p><p>git push –force origin isso</p><p>&#x2F;&#x2F;覆盖主分支</p><p>git push –force origin master</p>]]></content>
       
+      
+      <categories>
+          
+          <category> tips </category>
+          
+      </categories>
       
       
         <tags>
