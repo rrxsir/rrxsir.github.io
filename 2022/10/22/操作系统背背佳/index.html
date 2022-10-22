@@ -1,0 +1,332 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>操作系统背背佳 | 小熊出击</title><meta name="author" content="小熊٩(๑•̀ω•́๑)۶"><meta name="copyright" content="小熊٩(๑•̀ω•́๑)۶"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1. 什么是复杂指令集？什么是精简指令集？80x86采用的是哪种？复杂指令集（CISC，Complex Instruction Set Computing）架构的处理器有两大特点，一是可变指令长度，二是单一指令的功能比较复杂（完整）。因此可以不需要太多指令就能完成一个程序，减少了取指令时间。处理器的运作流程是：1. 读入指令 2. 将指令解码 3. 依据解码的结果执行动作。如此循环下去。其中解码将">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统背背佳">
+<meta property="og:url" content="http://example.com/2022/10/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%83%8C%E8%83%8C%E4%BD%B3/index.html">
+<meta property="og:site_name" content="小熊出击">
+<meta property="og:description" content="1. 什么是复杂指令集？什么是精简指令集？80x86采用的是哪种？复杂指令集（CISC，Complex Instruction Set Computing）架构的处理器有两大特点，一是可变指令长度，二是单一指令的功能比较复杂（完整）。因此可以不需要太多指令就能完成一个程序，减少了取指令时间。处理器的运作流程是：1. 读入指令 2. 将指令解码 3. 依据解码的结果执行动作。如此循环下去。其中解码将">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)">
+<meta property="article:published_time" content="2022-10-22T02:19:04.000Z">
+<meta property="article:modified_time" content="2022-10-22T02:19:28.297Z">
+<meta property="article:author" content="小熊٩(๑•̀ω•́๑)۶">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/10/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%83%8C%E8%83%8C%E4%BD%B3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '操作系统背背佳',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-22 10:19:28'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/ava.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/daily/"><i class="fa-fw fas fa-video"></i><span> 日常</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小熊出击</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/daily/"><i class="fa-fw fas fa-video"></i><span> 日常</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">操作系统背背佳</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-22T02:19:04.000Z" title="发表于 2022-10-22 10:19:04">2022-10-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-22T02:19:28.297Z" title="更新于 2022-10-22 10:19:28">2022-10-22</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="操作系统背背佳"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-什么是复杂指令集？什么是精简指令集？80x86采用的是哪种？"><a href="#1-什么是复杂指令集？什么是精简指令集？80x86采用的是哪种？" class="headerlink" title="1. 什么是复杂指令集？什么是精简指令集？80x86采用的是哪种？"></a>1. 什么是复杂指令集？什么是精简指令集？80x86采用的是哪种？</h2><p>复杂指令集（CISC，Complex Instruction Set Computing）架构的处理器有两大特点，一是可变指令长度，二是单一指令的功能比较复杂（完整）。因此可以不需要太多指令就能完成一个程序，减少了取指令时间。处理器的运作流程是：1. 读入指令 2. 将指令解码 3. 依据解码的结果执行动作。如此循环下去。其中解码将指令分解成一个个基本的处理器动作。由于指令长度不一，因此每个指令的解码后得到的动作个数不一，这样会使得指令执行的时间难以估计，很难进行流水作业。后来的统计研究发现，一个程序中大部分往往只用到了一少部分的指令集。后来就有了精简指令集（RISC）的出现。</p>
+<p>精简指令集（RISC，Reduced Instruction Set Computing）的特点：1. 统一采用单周期指令，指令周期数长短统一。2. 采用高效的流水线操作，让指令在流水线中实现并行处理，大幅度提高CPU处理效率。3. 精简执行机摒弃了复杂指令集中的微程序，因为微程序的使用会增加复杂性和每条指令的执行周期。4. 简化和标准化了指令的格式，这能提高流水线效率。5. 尽量减少了寻址方式，这能简化硬件逻辑部件的设计，并且缩短译码时间。6. 采用面向寄存器堆的指令。7. 采用装入、存储指令结构，至访问存储器，其他的所有数据都要从内存中暂时读到寄存器中，不需要访问内存。</p>
+<p>80x86采用的是复杂指令集。</p>
+<h2 id="2-什么是小端存储？什么是大端存储？80x86采用的是哪种？"><a href="#2-什么是小端存储？什么是大端存储？80x86采用的是哪种？" class="headerlink" title="2. 什么是小端存储？什么是大端存储？80x86采用的是哪种？"></a>2. 什么是小端存储？什么是大端存储？80x86采用的是哪种？</h2><p>小端存储：较高的有效字节放在较高的存储器地址，较低的有效字节放在较低的存储器地址。</p>
+<p>大端存储：较高的有效字节放在较低的存储器地址，较低的有效字节放在较高的存储器地址。</p>
+<p>80x86系列仍然在使用小段存储（1234存储时低地址是34，高地址是12）的方式。</p>
+<h2 id="3-8086有哪5类寄存器？请分别举例说明其作用。"><a href="#3-8086有哪5类寄存器？请分别举例说明其作用。" class="headerlink" title="3. 8086有哪5类寄存器？请分别举例说明其作用。"></a>3. 8086有哪5类寄存器？请分别举例说明其作用。</h2><p>数据寄存器、指针寄存器、变址寄存器、控制寄存器、段寄存器</p>
+<p>前三个合成通用寄存器</p>
+<h3 id="（一）通用寄存器"><a href="#（一）通用寄存器" class="headerlink" title="（一）通用寄存器"></a>（一）通用寄存器</h3><h4 id="（1）数据寄存器"><a href="#（1）数据寄存器" class="headerlink" title="（1）数据寄存器"></a>（1）数据寄存器</h4><p>AX(accumulator)：累加寄存器，常用于运算；在乘除等指令中指定用来存放操作数，另外，所有的I&#x2F;O指令都使用这一寄存器与外接设备传送数据。</p>
+<p>BX(base)：基址寄存器，常用于地址索引。</p>
+<p>CX(count)：计数寄存器，常用于计数；常用于保存计算值，如在移位指令时，循环和串处理指令中用作隐含的计数器。</p>
+<p>DX(data)：数据寄存器，常用于数据传递。</p>
+<h4 id="（2）指针寄存器"><a href="#（2）指针寄存器" class="headerlink" title="（2）指针寄存器"></a>（2）指针寄存器</h4><p>SP（Stack Pointer）：堆栈指针寄存器，与SS配合使用，可指向目前的堆栈位置。</p>
+<p>BP（Base Pointer）：基址指针寄存器，可用作SS的一个相对基址位置</p>
+<h4 id="（3）变址寄存器"><a href="#（3）变址寄存器" class="headerlink" title="（3）变址寄存器"></a>（3）变址寄存器</h4><p>SI（Source Index）：源变址寄存器，可用来存放相对于DS段之源变址指针</p>
+<p>DI（Destination Index）：目的变址寄存器，可用来存放相对于ES段之目的变址指针。</p>
+<h3 id="（二）控制寄存器"><a href="#（二）控制寄存器" class="headerlink" title="（二）控制寄存器"></a>（二）控制寄存器</h3><p><strong>1. 指令指针寄存器 IP：</strong>指令指针 IP 是一个 16 位专用寄存器，它指向当前需要取出的</p>
+<p>指令字节，当 BIU 从内存中取出一个指令字节后，IP 就自动加(取出该字节的长度，</p>
+<p>如:BIU 从内存中取出的是 1 个字节，IP 就会自动加 1，如果 BIU 从内存中取出的字</p>
+<p>节数长度为 3，IP 就自动加 3)，指向下一个指令字节。注意，IP 指向的是指令地址</p>
+<p>的段内地址偏移量，又称偏移地址(Offset Address)或有效地址(EA，Effective</p>
+<p>Address)。</p>
+<p><strong>2. 状态标志寄存器 FLAG：</strong>80x86 有一个 16 位的标志性寄存器 FR，在 FR 中有意义的有</p>
+<p>9 位，其中 6 位是状态位，3 位是控制位。标志寄存器(Flags Register,FR)又称程</p>
+<p>序状态字(Program Status Word,PSW)。这是一个存放条件标志、控制标志寄存器，</p>
+<p>主要用于反映处理器的状态和运算结果的某些特征及控制指令的执行。</p>
+<h3 id="（三）段寄存器"><a href="#（三）段寄存器" class="headerlink" title="（三）段寄存器"></a>（三）段寄存器</h3><p>为了运用所有的内存空间，8086 设定了四个段寄存器，专门用来保存段地址.</p>
+<ol>
+<li>CS(Code Segment):代码段寄存器</li>
+<li>DS(Data Segment):数据段寄存器</li>
+<li>SS(Stack Segment):堆栈段寄存器</li>
+<li>ES(Extra Segment):附加段寄存器。</li>
+</ol>
+<h2 id="4-有哪些段寄存器？它们的作用是什么？"><a href="#4-有哪些段寄存器？它们的作用是什么？" class="headerlink" title="4. 有哪些段寄存器？它们的作用是什么？"></a>4. 有哪些段寄存器？它们的作用是什么？</h2><ol>
+<li>CS(Code Segment):代码段寄存器</li>
+<li>DS(Data Segment):数据段寄存器</li>
+<li>SS(Stack Segment):堆栈段寄存器</li>
+<li>ES(Extra Segment):附加段寄存器。</li>
+</ol>
+<h2 id="5-什么是寻址？8086有哪些寻址方式？"><a href="#5-什么是寻址？8086有哪些寻址方式？" class="headerlink" title="5. 什么是寻址？8086有哪些寻址方式？"></a>5. 什么是寻址？8086有哪些寻址方式？</h2><p>找到操作数的地址（从而能够取出操作数）叫做<strong>寻址</strong></p>
+<p><strong>立即寻址</strong> </p>
+<p>MOV AX 1234H #给出了操作数，事实上没有“寻址”</p>
+<p><strong>直接寻址</strong> </p>
+<p>MOV AX [1234H] #直接给出了地址 1234H,用[]符号取数</p>
+<h2 id="6-什么是直接寻址？直接寻址的缺点是什么？"><a href="#6-什么是直接寻址？直接寻址的缺点是什么？" class="headerlink" title="6. 什么是直接寻址？直接寻址的缺点是什么？"></a>6. 什么是直接寻址？直接寻址的缺点是什么？</h2><p>立即寻址，寄存器寻址，直接寻址，寄存器间接寻址，寄存器相对寻址，基址变址寻址，相对基址变址寻址。</p>
+<h3 id="1）立即寻址"><a href="#1）立即寻址" class="headerlink" title="1）立即寻址"></a>1）立即寻址</h3><p>立即寻址方式所提供的操作数紧跟在操作码后面，与操作码一起放在指令代码段中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov ax,1234h</span><br></pre></td></tr></table></figure>
+
+<h3 id="2）寄存器寻址"><a href="#2）寄存器寻址" class="headerlink" title="2）寄存器寻址"></a>2）寄存器寻址</h3><p>寄存器寻址的特点是操作数在CPU内部的寄存器中，在指令中指定寄存器号。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mov al,dh</span><br></pre></td></tr></table></figure>
+
+<h3 id="3）直接寻址"><a href="#3）直接寻址" class="headerlink" title="3）直接寻址"></a>3）直接寻址</h3><p>直接寻址的操作数在存储器中，指令直接包含有操作数的有效地址。由于操作数一般存放在数据段，所以操作数的地址由DS加上指令中给出的16位偏移得到。（当然，除了DS寄存器以外，还可以指定其他段寄存器）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov ax,[1234h]</span><br><span class="line">mov ax,DS:[1234h]</span><br><span class="line">mov ES:[5678h],bl</span><br></pre></td></tr></table></figure>
+
+<h3 id="4）寄存器间接寻址"><a href="#4）寄存器间接寻址" class="headerlink" title="4）寄存器间接寻址"></a>4）寄存器间接寻址</h3><p>寄存器间接寻址的操作数在存储器中，操作数有效地址在SI、DI、BX、BP这四个寄存器之一中。在一般情况下，如果有效地址在SI、DI和BX中，则以DS段寄存器中的内容为段值，如果有效地址在BP中，则以SS段寄存器的内容为段值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, [SI] ; 自动引用DS作为段寄存器</span><br><span class="line">MOV DL, CS:[BX]  ;引用的段寄存器是CS</span><br><span class="line">MOV [BP], CX  ;此时引用的段寄存器是SS</span><br></pre></td></tr></table></figure>
+
+<h3 id="5）寄存器相对寻址"><a href="#5）寄存器相对寻址" class="headerlink" title="5）寄存器相对寻址"></a>5）寄存器相对寻址</h3><p>操作数在存储器中，操作数的有效地址是一个基址寄存器（BX、BP）或变址寄存器（SI、DI）内容加上指令中给定的8位或16位位移量之和。</p>
+<p>即 EA &#x3D; (BX)或(BP)或(SI)或(DI) + 8位或16位位移量。</p>
+<p>在一般情况下，如果SI、DI或BX的内容作为有效地址的一部分，那么引用的段寄存器是DS。如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, [DI+1223H] ; 引用的段寄存器是DS</span><br></pre></td></tr></table></figure>
+
+<p>假设，（DS）&#x3D; 5000H，（DI）&#x3D; 3678H。</p>
+<p>那么，存取的物理存储单元地址是5489BH。再假设该字存储单元的内容是55AAH，那么在执行该指令后，（AX）&#x3D; 55AAH。</p>
+<p>而当BP的内容作为有效地址一部分时，那么引用的段寄存器是SS，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV BX, [BP-4]  ; 引用的段寄存器是SS</span><br></pre></td></tr></table></figure>
+
+<p>当然也可以自行指定段寄存器，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV ES:[BX+5], AL ; 引用ES作为段寄存器</span><br></pre></td></tr></table></figure>
+
+<p>这种寻址方式同样可用于表格处理，表格的首地址可设置为指令中的位移量，利用修改基址或变址寄存器的内容来存取表格中的项值。</p>
+<p>以下两种写法等价：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, [SI+3]</span><br><span class="line"></span><br><span class="line">MOV AX, 3[SI]</span><br></pre></td></tr></table></figure>
+
+<h3 id="6）基址变址寻址方式"><a href="#6）基址变址寻址方式" class="headerlink" title="6）基址变址寻址方式"></a>6）基址变址寻址方式</h3><p>操作数在存储器中，操作数的有效地址由基址寄存器之一的内容与变址寄存器之一的内容相加得到。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">即：EA = (BX)或(BP) + (SI)或(DI)</span><br></pre></td></tr></table></figure>
+
+<p>在一般情况下，如果BP的内容作为有效地址的一部分，则以SS的内容作为段值，否则以DS的内容作为段值。</p>
+<p>当所得的有效地址超过FFFFFH时，就取其64K的模。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例如： MOV AX, [BX+DI] ; 此时引用DS段寄存器</span><br></pre></td></tr></table></figure>
+
+<p>假设，（DS）&#x3D; 5000H，（BX）&#x3D; 1223H， （DI）&#x3D; 54H</p>
+<p>那么，存取的物理存储单元地址是51277H。再假设改字存储单元的内容是168H，那么在执行该指令后，（AX）&#x3D; 168H</p>
+<p>当然，还可以增加段超越前缀来指定段寄存器。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">例如：</span><br><span class="line"></span><br><span class="line">MOV AX, ES:[BX+SI]  ; 引用ES作为段寄存器</span><br><span class="line">MOV DS:[BP+SI], AL  ; 引用DS作为段寄存器</span><br></pre></td></tr></table></figure>
+
+<p>这种寻址方式适用于数组或表格处理。用基址寄存器存放数组首地址，而用变址寄存器来定位数组中的各元素，或反之。</p>
+<p>另外，以下两种表示方法是等价的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, [BX+DI]</span><br><span class="line"></span><br><span class="line">MOV AX, [DI][BX]</span><br></pre></td></tr></table></figure>
+
+<h3 id="7）相对基址变址寻址方式"><a href="#7）相对基址变址寻址方式" class="headerlink" title="7）相对基址变址寻址方式"></a>7）相对基址变址寻址方式</h3><p>操作数在存储器中，操作数的有效地址由基址寄存器之一的内容与变址寄存器之一的内容及指令中给定的8位或16位位位移量相加得到。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">即：EA = (BX)或(BP) + (SI)或(DI) + 8位或16位位移量</span><br></pre></td></tr></table></figure>
+
+<p>在一般情况下，如果BP作为有效地址的一部分，则以SS段寄存器的内容为段值，否则以DS段寄存器的内容为段值。</p>
+<p>在指令中给定的8位或16位位移量采用补码形式表示。在计算有效地址时，如果偏移量是8位，那么被带符号扩展成16位。当所得的有效地址超过FFFFH时，就取其64K的模。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">举例：MOV AX, [BX+DI-2] ; 自动引用DS作为段寄存器</span><br></pre></td></tr></table></figure>
+
+<p>假设，（DS）&#x3D; 5000H，（BX）&#x3D; 1223H, （DI）&#x3D; 54H<br>那么，存取的物理存储单元地址是51275H。再设该字存储单元的内容是7654H，那么在执行该指令后，（AX）&#x3D; 7654H</p>
+<p>以下四种表示方法均是等价的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, [BX+DI+1234H]</span><br><span class="line"></span><br><span class="line">MOV AX, 1234H[BX+DI]</span><br><span class="line"></span><br><span class="line">MOV AX, 1234H[BX][DI]</span><br><span class="line"></span><br><span class="line">MOV AX, 1234H[DI][BX]</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-主程序与子程序之间如何传递参数？你的实验代码中在哪里体现的？"><a href="#7-主程序与子程序之间如何传递参数？你的实验代码中在哪里体现的？" class="headerlink" title="7. 主程序与子程序之间如何传递参数？你的实验代码中在哪里体现的？"></a>7. 主程序与子程序之间如何传递参数？你的实验代码中在哪里体现的？</h2><p><strong>（一）利用寄存器传递参数</strong> </p>
+<p>利用寄存器传递参数就是把参数放在约定的寄存器中，这种方法的优点是实行简</p>
+<p>单和调用方便，但是由于寄存器的个数有限，并且寄存器往往还需要存放其他数据因此</p>
+<p>只适合传递参数比较少的情况</p>
+<p><strong>（二）利用约定的存储单元传递参数</strong> </p>
+<p>在传递参数较多的情况下，可以利用约定的内存变量来传递参数，这种方法的优点</p>
+<p>是子程序要处理的数据或送出的结果都有独立的存储单元，编写程序的时候不容易出</p>
+<p>错但是，这种方法要占用一定的存储单元并且通用性较差</p>
+<p><strong>（三）利用堆栈传递参数</strong> </p>
+<p>如果使用堆栈传递入口参数，那么主程序在调用子程序之前，把需要传递的参数依</p>
+<p>次压入堆栈，子程序从堆栈中取入口参数，如果使用堆栈传递出口参数，那么子程序在</p>
+<p>返回前，把需要返回的参数存入堆栈，主程序在堆栈中取出口参数即可利用堆栈传递参数可以不用占用寄存器，也无需额外使用存储单元，由于参数和子</p>
+<p>程序的返回地址混在一起，有时还要考虑保护寄存器，所以比较复杂，通常利用堆栈传</p>
+<p>递参数的入口参数，而利用寄存器传递出口参数</p>
+<p><strong>（四）利用 CALL 后续区传递参数</strong> </p>
+<p>CALL 后续区是指位于 CALL 指令后的存储区，主程序在调用子程序之前，把入口参</p>
+<p>数存入 CALL 指令后面的存储区，子程序根据保存在堆栈中的返回地址找到入口参数，</p>
+<p>这种传递参数的方法称为 CALL 后续传递参数法，由于这种方法把数据和代码混在一起，</p>
+<p>在 x86 系列中使用的不多</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">小熊٩(๑•̀ω•́๑)۶</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/10/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%83%8C%E8%83%8C%E4%BD%B3/">http://example.com/2022/10/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%83%8C%E8%83%8C%E4%BD%B3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">小熊出击</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/10/16/20221015/"><img class="next-cover" src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">20221015</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/ava.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小熊٩(๑•̀ω•́๑)۶</div><div class="author-info__description">看好！小熊出击！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">95</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">29</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%A4%8D%E6%9D%82%E6%8C%87%E4%BB%A4%E9%9B%86%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E7%B2%BE%E7%AE%80%E6%8C%87%E4%BB%A4%E9%9B%86%EF%BC%9F80x86%E9%87%87%E7%94%A8%E7%9A%84%E6%98%AF%E5%93%AA%E7%A7%8D%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">1. 什么是复杂指令集？什么是精简指令集？80x86采用的是哪种？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BB%80%E4%B9%88%E6%98%AF%E5%B0%8F%E7%AB%AF%E5%AD%98%E5%82%A8%EF%BC%9F%E4%BB%80%E4%B9%88%E6%98%AF%E5%A4%A7%E7%AB%AF%E5%AD%98%E5%82%A8%EF%BC%9F80x86%E9%87%87%E7%94%A8%E7%9A%84%E6%98%AF%E5%93%AA%E7%A7%8D%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">2. 什么是小端存储？什么是大端存储？80x86采用的是哪种？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-8086%E6%9C%89%E5%93%AA5%E7%B1%BB%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%9F%E8%AF%B7%E5%88%86%E5%88%AB%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E5%85%B6%E4%BD%9C%E7%94%A8%E3%80%82"><span class="toc-number">3.</span> <span class="toc-text">3. 8086有哪5类寄存器？请分别举例说明其作用。</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">3.1.</span> <span class="toc-text">（一）通用寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%881%EF%BC%89%E6%95%B0%E6%8D%AE%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">3.1.1.</span> <span class="toc-text">（1）数据寄存器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%882%EF%BC%89%E6%8C%87%E9%92%88%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">3.1.2.</span> <span class="toc-text">（2）指针寄存器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E5%8F%98%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">3.1.3.</span> <span class="toc-text">（3）变址寄存器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E6%8E%A7%E5%88%B6%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">3.2.</span> <span class="toc-text">（二）控制寄存器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E6%AE%B5%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">3.3.</span> <span class="toc-text">（三）段寄存器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%AE%B5%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%9F%E5%AE%83%E4%BB%AC%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">4. 有哪些段寄存器？它们的作用是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%BB%80%E4%B9%88%E6%98%AF%E5%AF%BB%E5%9D%80%EF%BC%9F8086%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="toc-number">5.</span> <span class="toc-text">5. 什么是寻址？8086有哪些寻址方式？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BB%80%E4%B9%88%E6%98%AF%E7%9B%B4%E6%8E%A5%E5%AF%BB%E5%9D%80%EF%BC%9F%E7%9B%B4%E6%8E%A5%E5%AF%BB%E5%9D%80%E7%9A%84%E7%BC%BA%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">6. 什么是直接寻址？直接寻址的缺点是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%BC%89%E7%AB%8B%E5%8D%B3%E5%AF%BB%E5%9D%80"><span class="toc-number">6.1.</span> <span class="toc-text">1）立即寻址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%EF%BC%89%E5%AF%84%E5%AD%98%E5%99%A8%E5%AF%BB%E5%9D%80"><span class="toc-number">6.2.</span> <span class="toc-text">2）寄存器寻址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%EF%BC%89%E7%9B%B4%E6%8E%A5%E5%AF%BB%E5%9D%80"><span class="toc-number">6.3.</span> <span class="toc-text">3）直接寻址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%EF%BC%89%E5%AF%84%E5%AD%98%E5%99%A8%E9%97%B4%E6%8E%A5%E5%AF%BB%E5%9D%80"><span class="toc-number">6.4.</span> <span class="toc-text">4）寄存器间接寻址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%EF%BC%89%E5%AF%84%E5%AD%98%E5%99%A8%E7%9B%B8%E5%AF%B9%E5%AF%BB%E5%9D%80"><span class="toc-number">6.5.</span> <span class="toc-text">5）寄存器相对寻址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%EF%BC%89%E5%9F%BA%E5%9D%80%E5%8F%98%E5%9D%80%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-number">6.6.</span> <span class="toc-text">6）基址变址寻址方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%EF%BC%89%E7%9B%B8%E5%AF%B9%E5%9F%BA%E5%9D%80%E5%8F%98%E5%9D%80%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-number">6.7.</span> <span class="toc-text">7）相对基址变址寻址方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E4%B8%BB%E7%A8%8B%E5%BA%8F%E4%B8%8E%E5%AD%90%E7%A8%8B%E5%BA%8F%E4%B9%8B%E9%97%B4%E5%A6%82%E4%BD%95%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0%EF%BC%9F%E4%BD%A0%E7%9A%84%E5%AE%9E%E9%AA%8C%E4%BB%A3%E7%A0%81%E4%B8%AD%E5%9C%A8%E5%93%AA%E9%87%8C%E4%BD%93%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="toc-number">7.</span> <span class="toc-text">7. 主程序与子程序之间如何传递参数？你的实验代码中在哪里体现的？</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%83%8C%E8%83%8C%E4%BD%B3/" title="操作系统背背佳"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统背背佳"/></a><div class="content"><a class="title" href="/2022/10/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%83%8C%E8%83%8C%E4%BD%B3/" title="操作系统背背佳">操作系统背背佳</a><time datetime="2022-10-22T02:19:04.000Z" title="发表于 2022-10-22 10:19:04">2022-10-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/16/20221015/" title="20221015"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="20221015"/></a><div class="content"><a class="title" href="/2022/10/16/20221015/" title="20221015">20221015</a><time datetime="2022-10-15T16:05:38.000Z" title="发表于 2022-10-16 00:05:38">2022-10-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/29/Vue%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="Vue中的一些说明及注意事项"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue中的一些说明及注意事项"/></a><div class="content"><a class="title" href="/2022/06/29/Vue%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" title="Vue中的一些说明及注意事项">Vue中的一些说明及注意事项</a><time datetime="2022-06-29T08:28:05.000Z" title="发表于 2022-06-29 16:28:05">2022-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/29/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Vue生命周期"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue生命周期"/></a><div class="content"><a class="title" href="/2022/06/29/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Vue生命周期">Vue生命周期</a><time datetime="2022-06-29T07:58:50.000Z" title="发表于 2022-06-29 15:58:50">2022-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/28/JAVA-VO-PO-POJO%E7%AD%89%E7%AD%89%E7%9A%84%E5%8C%BA%E5%88%AB/" title="JAVA VO/PO/POJO等等的区别"><img src="/linear-gradient(20deg,%20#0062be,%20#925696,%20#cc426e,%20#fb0347)" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JAVA VO/PO/POJO等等的区别"/></a><div class="content"><a class="title" href="/2022/06/28/JAVA-VO-PO-POJO%E7%AD%89%E7%AD%89%E7%9A%84%E5%8C%BA%E5%88%AB/" title="JAVA VO/PO/POJO等等的区别">JAVA VO/PO/POJO等等的区别</a><time datetime="2022-06-28T02:45:32.000Z" title="发表于 2022-06-28 10:45:32">2022-06-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By 小熊٩(๑•̀ω•́๑)۶</div><div class="footer_custom_text">请问是好小熊还是坏小熊？</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Am7x08ZeYD9VdolOddY6z2ic-gzGzoHsz',
+      appKey: '2IepgYqPE8wpNECbM8DqaDe5',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="60198" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"> </div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(function(d, w, c) {
+    w.ChatraID = 'KdhoLZYvnGE4z7fi9';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (true) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (true) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
