@@ -1,0 +1,482 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>FAT文件系统 | 小熊出击</title><meta name="keywords" content="操作系统"><meta name="author" content="小熊٩(๑•̀ω•́๑)۶"><meta name="copyright" content="小熊٩(๑•̀ω•́๑)۶"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="FAT16文件系统当把一部分磁盘空间格式化为fat文件系统时，fat文件系统就将这个分区当成整块可分配的区域进行规划，以便于数据的存储。我们把FAT16部分提取出来，详细描述一下。 FAT16是Microsoft较早推出的文件系统，具有高度兼容性，目前仍然广泛应用于个人电脑尤其是移动存储设备中。FAT16在DBR之后没有留有任何保留扇区，其后紧随的便是FAT表。FAT表是FAT16用来记录磁盘数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FAT文件系统">
+<meta property="og:url" content="http://example.com/2022/11/11/FAT%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="小熊出击">
+<meta property="og:description" content="FAT16文件系统当把一部分磁盘空间格式化为fat文件系统时，fat文件系统就将这个分区当成整块可分配的区域进行规划，以便于数据的存储。我们把FAT16部分提取出来，详细描述一下。 FAT16是Microsoft较早推出的文件系统，具有高度兼容性，目前仍然广泛应用于个人电脑尤其是移动存储设备中。FAT16在DBR之后没有留有任何保留扇区，其后紧随的便是FAT表。FAT表是FAT16用来记录磁盘数据">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/ava.jpg">
+<meta property="article:published_time" content="2022-11-11T01:11:16.000Z">
+<meta property="article:modified_time" content="2022-11-11T14:43:27.286Z">
+<meta property="article:author" content="小熊٩(๑•̀ω•́๑)۶">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/ava.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/11/11/FAT%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'FAT文件系统',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-11 22:43:27'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/ava.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/daily/"><i class="fa-fw fas fa-video"></i><span> 日常</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/ava.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小熊出击</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/daily/"><i class="fa-fw fas fa-video"></i><span> 日常</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">FAT文件系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-11T01:11:16.000Z" title="发表于 2022-11-11 09:11:16">2022-11-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-11T14:43:27.286Z" title="更新于 2022-11-11 22:43:27">2022-11-11</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="FAT文件系统"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="FAT16文件系统"><a href="#FAT16文件系统" class="headerlink" title="FAT16文件系统"></a>FAT16文件系统</h2><p>当把一部分磁盘空间格式化为fat文件系统时，fat文件系统就将这个分区当成整块可分配的区域进行规划，以便于数据的存储。我们把FAT16部分提取出来，详细描述一下。</p>
+<p>FAT16是Microsoft较早推出的文件系统，具有高度兼容性，目前仍然广泛应用于个人电脑尤其是移动存储设备中。FAT16在DBR之后没有留有任何保留扇区，其后紧随的便是FAT表。FAT表是FAT16用来记录磁盘数据区簇链结构的。FAT将磁盘空间按一定数目的扇区为单位进行划分，这样的单位称为簇。通常情况下，每扇区512字节的原则是不变的。簇的大小一般是2n (n为整数)个扇区的大小，像512B,1K,2K,4K,8K,16K,32K，64K。实际中通常不超过32K。之所以簇为单位而不以扇区为单位进行磁盘的分配，是因为当分区容量较大时，采用大小为512b的扇区管理会增加fat表的项数，对大文件存取增加消耗，文件系统效率不高。分区的大小和簇的取值是有关系的：</p>
+<table>
+<thead>
+<tr>
+<th>表9 FAT16分区大小与对因簇大小</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>分区空间大小</td>
+<td>每个簇的扇区</td>
+<td>簇空间大小</td>
+</tr>
+<tr>
+<td>0MB-32MB</td>
+<td>1</td>
+<td>512个字节</td>
+</tr>
+<tr>
+<td>33MB-64MB</td>
+<td>2</td>
+<td>1k</td>
+</tr>
+<tr>
+<td>65MB-128MB</td>
+<td>4</td>
+<td>2k</td>
+</tr>
+<tr>
+<td>129MB-225MB</td>
+<td>8</td>
+<td>4k</td>
+</tr>
+<tr>
+<td>256MB-511MB</td>
+<td>16</td>
+<td>8k</td>
+</tr>
+<tr>
+<td>512MB-1023MB</td>
+<td>32</td>
+<td>16k</td>
+</tr>
+<tr>
+<td>1024MB-2047MB</td>
+<td>64</td>
+<td>32k</td>
+</tr>
+<tr>
+<td>2048MB-4095MB</td>
+<td>128</td>
+<td>64k</td>
+</tr>
+</tbody></table>
+<p>注意：少于32680个扇区的分区中，簇空间大小可最多达到每个簇8个扇区。不管用户是使用磁盘管理器来格式化分区，还是使用命令提示行键入format命令格式化，格式化程序都创建一个12位的FAT。少于16MB的分区，系统通常会将其格式化成12位的FAT，FAT12是FAT的初始实现形式，是针对小型介质的。FAT12文件分配表要比FAT16和FAT32的文件分配表小，因为它对每个条目使用的空间较少。这就给数据留下较多的空间。所有用FAT12格式化的5.25英寸软盘以及1.44MB的3.5英寸软盘都是由FAT12格式化的。除了FAT表中记录每簇链结的二进制位数与FAT16不同外，其余原理与FAT16均相同，不再单独解释。。。</p>
+<p>格式化FAT16分区时，格式化程序根据分区的大小确定簇的大小，然后根据保留扇区的数目、根目录的扇区数目、数据区可分的簇数与FAT表本身所占空间来确定FAT表所需的扇区数目，然后将计算后的结果写入DBR的相关位置。</p>
+<p>FAT16 DBR参数的偏移0x11处记录了根目录所占扇区的数目。偏移0x16记录了FAT表所占扇区的数据。偏移0x10记录了FAT表的副本数目。系统在得到这几项参数以后，就可以确定数据区的开始扇区偏移了。</p>
+<p>FAT16文件系统从根目录所占的32个扇区之后的第一个扇区开始以簇为单位进行数据的处理，这之前仍以扇区为单位。对于根目录之后的第一个簇，系统并不编号为第0簇或第1簇 (可能是留作关键字的原因吧)，而是编号为第2簇，也就是说数据区顺序上的第1个簇也是编号上的第2簇。</p>
+<p>FAT文件系统之所以有12，16，32不同的版本之分，其根本在于FAT表用来记录任意一簇链接的二进制位数。以FAT16为例，每一簇在FAT表中占据2字节(二进制16位)。所以，FAT16最大可以表示的簇号为0xFFFF(十进制的65535)，以32K为簇的大小的话，FAT16可以管理的最大磁盘空间为：32KB×65535&#x3D;2048MB,这就是为什么FAT16不支持超过2GB分区的原因。</p>
+<p>FAT表实际上是一个数据表，以2个字节为单位，我们暂将这个单位称为FAT记录项，通常情况其第1、2个记录项(前4个字节)用作介质描述。从第三个记录项开始记录除根目录外的其他文件及文件夹的簇链情况。根据簇的表现情况FAT用相应的取值来描述，见表10</p>
+<table>
+<thead>
+<tr>
+<th>表10 FAT16记录项的取值含义(16进制)</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FAT16记录项的取值</td>
+<td>对应簇的表现情况</td>
+</tr>
+<tr>
+<td>0000</td>
+<td>未分配的簇</td>
+</tr>
+<tr>
+<td>0002~FFEF</td>
+<td>已分配的簇</td>
+</tr>
+<tr>
+<td>FFF0~FFF6</td>
+<td>系统保留</td>
+</tr>
+<tr>
+<td>FFF7</td>
+<td>坏簇</td>
+</tr>
+<tr>
+<td>FFF8~FFFF</td>
+<td>文件结束簇</td>
+</tr>
+</tbody></table>
+<p>FAT表记录了磁盘数据文件的存储链表，对于数据的读取而言是极其重要的，以至于Microsoft为其开发的FAT文件系统中的FAT表创建了一份备份，就是我们看到的FAT2。FAT2与FAT1的内容通常是即时同步的，也就是说如果通过正常的系统读写对FAT1做了更改，那么FAT2也同样被更新。如果从这个角度来看，系统的这个功能在数据恢复时是个天灾。</p>
+<p>FAT文件系统的目录结构其实是一颗有向的从根到叶的树，这里提到的有向是指对于FAT分区内的任一文件(包括文件夹)，均需从根目录寻址来找到。可以这样认为：目录存储结构的入口就是根目录。</p>
+<p>FAT文件系统根据根目录来寻址其他文件(包括文件夹)，故而根目录的位置必须在磁盘存取数据之前得以确定。FAT文件系统就是根据分区的相关DBR参数与DBR中存放的已经计算好的FAT表(2份)的大小来确定的。格式化以后，跟目录的大小和位置其实都已经确定下来了：位置紧随FAT2之后，大小通常为32个扇区。根目录之后便是数据区第2簇。</p>
+<p>FAT文件系统的一个重要思想是把目录(文件夹)当作一个特殊的文件来处理，FAT32甚至将根目录当作文件处理(旁：NTFS将分区参数、安全权限等好多东西抽象为文件更是这个思想的升华)，在FAT16中，虽然根目录地位并不等同于普通的文件或者说是目录，但其组织形式和普通的目录(文件夹)并没有不同。FAT分区中所有的文件夹(目录)文件，实际上可以看作是一个存放其他文件(文件夹)入口参数的数据表。所以目录的占用空间的大小并不等同于其下所有数据的大小，但也不等同于0。通常是占很小的空间的，可以看作目录文件是一个简单的二维表文件。其具体存储原理是：</p>
+<p>不管目录文件所占空间为多少簇，一簇为多少字节。系统都会以32个字节为单位进行目录文件所占簇的分配。这32个字节以确定的偏移来定义本目录下的一个文件(或文件夹)的属性，实际上是一个简单的二维表。</p>
+<p>这32个字节的各字节偏移定义如表：</p>
+<table>
+<thead>
+<tr>
+<th>表11  FAT16目录项32个字节的表示定义</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>字节偏移(16进制)</td>
+<td>字节数</td>
+<td>定义</td>
+<td></td>
+</tr>
+<tr>
+<td>0x0~0x7</td>
+<td>8</td>
+<td>文件名</td>
+<td></td>
+</tr>
+<tr>
+<td>0x8~0xA</td>
+<td>3</td>
+<td>扩展名</td>
+<td></td>
+</tr>
+<tr>
+<td>0xB</td>
+<td>1</td>
+<td>属性字节</td>
+<td>00000000(读写)</td>
+</tr>
+<tr>
+<td>00000001(只读)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00000010(隐藏)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00000100(系统)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00001000(卷标)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00010000(子目录)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>00100000(归档)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0xC~0x15</td>
+<td>10</td>
+<td>系统保留</td>
+<td></td>
+</tr>
+<tr>
+<td>0x16~0x17</td>
+<td>2</td>
+<td>文件的最近修改时间</td>
+<td></td>
+</tr>
+<tr>
+<td>0x18~0x19</td>
+<td>2</td>
+<td>文件的最近修改日期</td>
+<td></td>
+</tr>
+<tr>
+<td>0x1A~0x1B</td>
+<td>2</td>
+<td>表示文件的首簇号</td>
+<td></td>
+</tr>
+<tr>
+<td>0x1C~0x1F</td>
+<td>4</td>
+<td>表示文件的长度</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>(1)、对于短文件名，系统将文件名分成两部分进行存储，即主文件名+扩展名。0x0<del>0x7字节记录文件的主文件名，0x8</del>0xA记录文件的扩展名，取文件名中的ASCII码值。不记录主文件名与扩展名之间的”.” 主文件名不足8个字符以空白符(20H)填充，扩展名不足3个字符同样以空白符(20H)填充。0x0偏移处的取值若为00H，表明目录项为空；若为E5H，表明目录项曾被使用，但对应的文件或文件夹已被删除。(这也是误删除后恢复的理论依据)。文件名中的第一个字符若为“.”或“..”表示这个簇记录的是一个子目录的目录项。“.”代表当前目录；“..”代表上级目录(和我们在dos或windows中的使用意思是一样的，如果磁盘数据被破坏，就可以通过这两个目录项的具体参数推算磁盘的数据区的起始位置，猜测簇的大小等等，故而是比较重要的)</p>
+<p>(2)、0xB的属性字段：可以看作系统将0xB的一个字节分成8位，用其中的一位代表某种属性的有或无。这样，一个字节中的8位每位取不同的值就能反映各个属性的不同取值了。如00000101就表示这是个文件，属性是只读、系统。</p>
+<p>(3)、0xC~0x15在原FAT16的定义中是保留未用的。在高版本的WINDOWS系统中有时也用它来记录修改时间和最近访问时间。那样其字段的意义和FAT32的定义是相同的，见后边FAT32。</p>
+<p>(4)、0x16<del>0x17中的时间&#x3D;小时x2048+分钟x32+秒&#x2F;2。得出的结果换算成16进制填入即可。也就是：0x16字节的0</del>4位是以2秒为单位的量值；0x16字节的5<del>7位和0x17字节的0</del>2位是分钟；0x17字节的3~7位是小时。</p>
+<p>(5)、0x18<del>0x19中的日期&#x3D;(年份-1980)x512+月份x32+日。得出的结果换算成16进制填入即可。也就是：0x18字节0</del>4位是日期数；0x18字节5<del>7位和0x19字节0位是月份；0x19字节的1</del>7位为年号，原定义中0<del>119分别代表1980</del>2099，目前高版本的Windows允许取0~127，即年号最大可以到2107年。</p>
+<p>(6)、0x1A<del>0x1B存放文件或目录的表示文件的首簇号，系统根据掌握的首簇号在FAT表中找到入口，然后再跟踪簇链直至簇尾，同时用0x1C</del>0x1F处字节判定有效性。就可以完全无误的读取文件(目录)了。</p>
+<p>(7)、普通子目录的寻址过程也是通过其父目录中的目录项来指定的，与数据文件(指非目录文件)不同的是目录项偏移0xB的第4位置1，而数据文件为0。</p>
+<p>对于整个FAT分区而言，簇的分配并不完全总是分配干净的。如一个数据区为99个扇区的FAT系统，如果簇的大小设定为2扇区，就会有1个扇区无法分配给任何一个簇。这就是分区的剩余扇区，位于分区的末尾。有的系统用最后一个剩余扇区备份本分区的DBR，这也是一种好的备份方法。</p>
+<p>早的FAT16系统并没有长文件名一说，Windows操作系统已经完全支持在FAT16上的长文件名了。FAT16的长文件名与FAT32长文件名的定义是相同的，关于长文件名，在FAT32部分再详细作解释<em>。</em></p>
+<h2 id="FAT32"><a href="#FAT32" class="headerlink" title="FAT32"></a>FAT32</h2><p>FAT32是个非常有功劳的文件系统,Microsoft成功地设计并运用了它,直到今天NTFS铺天盖地袭来的时候,FAT32依然占据着Microsoft Windows文件系统中重要的地位.FAT32最早是出于FAT16不支持大分区、单位簇容量大以致空间急剧浪费等缺点设计的。实际应用中，FAT32还是成功的。</p>
+<p>FAT32与FAT16的原理基本相同。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/evanwu_85/article/details/6085625?ops_request_misc=%7B%22request_id%22:%22166796285016782428696356%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=166796285016782428696356&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-6085625-null-null.142%5Ev63%5Econtrol,201%5Ev3%5Eadd_ask,213%5Ev2%5Et3_esquery_v3&utm_term=fat&spm=1018.2226.3001.4187">(112条消息) FAT文件系统存储原理_evanwu_85的博客-CSDN博客</a></p>
+<h2 id="3-FAT文件系统结构"><a href="#3-FAT文件系统结构" class="headerlink" title="3. FAT文件系统结构"></a>3. FAT文件系统结构</h2><p>FAT16：</p>
+<table>
+<thead>
+<tr>
+<th>引导扇区</th>
+<th>FAT1</th>
+<th>FAT2（备份）</th>
+<th>根文件夹</th>
+<th>其他文件夹以及所有的文件</th>
+<th>剩余扇区</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1扇区</td>
+<td>实际情况取大小</td>
+<td>同FAT1</td>
+<td>32个扇区</td>
+<td>开始簇编号（从2开始）</td>
+<td>不足1簇</td>
+</tr>
+</tbody></table>
+<p>FAT32：</p>
+<table>
+<thead>
+<tr>
+<th>引导扇区</th>
+<th>其余保留扇区</th>
+<th>FAT1</th>
+<th>FAT2</th>
+<th>根文件夹首簇</th>
+<th>其他文件夹及所有文件</th>
+<th>剩余扇区</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1扇区</td>
+<td>31个扇区</td>
+<td>实际情况取大小</td>
+<td>同FAT1</td>
+<td>第2簇</td>
+<td>数据区</td>
+<td>不足1簇</td>
+</tr>
+</tbody></table>
+<p>一个FAT文件系统包括四个不同的部分。</p>
+<ol>
+<li><p>保留扇区，位于最开始的位置。第一个保留扇区是引导区（分区启动记录）。它包括一个称为基本输入输出参数块的区域（包括一些基本的文件系统信息尤其是它的类型和其它指向其它扇区的指针），通常包括操作系统的启动调用代码。保留扇区的总数记录在引导扇区中的一个参数中。引导扇区中的重要信息可以被DOS和OS&#x2F;2中称为驱动器参数块的操作系统结构访问。（在FAT16中。保留扇区的数量通常为1，即仅仅DBR扇区；而在FAT32中，保留删除的数量通常为32）</p>
+</li>
+<li><p>FAT区域。它包含有两份文件分配表，这是出于系统冗余考虑，尽管它很少使用，即使是磁盘修复工具也很少使用它。它是分区信息的映射表，指示簇是如何存储的。</p>
+</li>
+<li><p>根目录区域。它是在根目录中存储文件和目录信息的目录表。在FAT32下它可以存在分区中的任何位置，但是在早期的版本中它永远紧随FAT区域之后。</p>
+</li>
+<li><p>数据区域。这是实际的文件和目录数据存储的区域，它占据了分区的绝大部分。通过简单地在FAT中添加文件链接的个数可以任意增加文件大小和子目录个数（只要有空簇存在）。然而需要注意的是每个簇只能被一个文件占有，这样的话如果在32KB大小的簇中有一个1KB大小的文件，那么31KB的空间就浪费掉了。</p>
+</li>
+</ol>
+<p>数据格式：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013686805/article/details/38823051?spm=1001.2014.3001.5502">(112条消息) FAT学习笔记（四）——Dir Entry_知了112的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39654127/article/details/88429461#main-toc">(112条消息) 详解FAT12文件系统_洋葱汪的博客-CSDN博客_怎么用fat12翻译vds文件中的内容</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">小熊٩(๑•̀ω•́๑)۶</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/11/11/FAT%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">http://example.com/2022/11/11/FAT%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">小熊出击</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></div><div class="post_share"><div class="social-share" data-image="/img/ava.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/11/11/GDT%EF%BC%88%E5%85%A8%E5%B1%80%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8%EF%BC%89%E5%92%8CLDT%EF%BC%88%E5%B1%80%E9%83%A8%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8%EF%BC%89/"><img class="prev-cover" src="/img/ava.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">GDT（全局描述符表）和LDT（局部描述符表）</div></div></a></div><div class="next-post pull-right"><a href="/2022/11/10/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%B0%8F%E8%AE%B0/"><img class="next-cover" src="/img/ava.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">汇编语言小记</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/11/11/GDT%EF%BC%88%E5%85%A8%E5%B1%80%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8%EF%BC%89%E5%92%8CLDT%EF%BC%88%E5%B1%80%E9%83%A8%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8%EF%BC%89/" title="GDT（全局描述符表）和LDT（局部描述符表）"><img class="cover" src="/img/ava.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-11</div><div class="title">GDT（全局描述符表）和LDT（局部描述符表）</div></div></a></div><div><a href="/2022/11/10/echo%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/" title="echo命令详解"><img class="cover" src="/img/ava.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-10</div><div class="title">echo命令详解</div></div></a></div><div><a href="/2022/11/10/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%B0%8F%E8%AE%B0/" title="汇编语言小记"><img class="cover" src="/img/ava.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-10</div><div class="title">汇编语言小记</div></div></a></div><div><a href="/2022/10/24/NASM%E6%B1%87%E7%BC%96/" title="NASM汇编"><img class="cover" src="/img/ava.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-24</div><div class="title">NASM汇编</div></div></a></div><div><a href="/2022/10/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%83%8C%E8%83%8C%E4%BD%B3(1)/" title="操作系统背背佳(1)"><img class="cover" src="/img/xielaoban.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-22</div><div class="title">操作系统背背佳(1)</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/ava.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小熊٩(๑•̀ω•́๑)۶</div><div class="author-info__description">看好！小熊出击！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">107</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Lookup! Bear's Coming!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#FAT16%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">FAT16文件系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FAT32"><span class="toc-number">2.</span> <span class="toc-text">FAT32</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-FAT%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">3. FAT文件系统结构</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/14/one-hot%E7%BC%96%E7%A0%81/" title="one-hot编码"><img src="/img/ava.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="one-hot编码"/></a><div class="content"><a class="title" href="/2022/11/14/one-hot%E7%BC%96%E7%A0%81/" title="one-hot编码">one-hot编码</a><time datetime="2022-11-14T14:31:32.000Z" title="发表于 2022-11-14 22:31:32">2022-11-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/13/span%E7%AD%94%E6%A1%88%E7%B1%BB%E5%9E%8B%E5%BC%80%E5%88%9B%E8%80%85/" title="squad--text span答案类型开创者"><img src="/img/ava.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="squad--text span答案类型开创者"/></a><div class="content"><a class="title" href="/2022/11/13/span%E7%AD%94%E6%A1%88%E7%B1%BB%E5%9E%8B%E5%BC%80%E5%88%9B%E8%80%85/" title="squad--text span答案类型开创者">squad--text span答案类型开创者</a><time datetime="2022-11-13T12:55:11.000Z" title="发表于 2022-11-13 20:55:11">2022-11-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/11/GDT%EF%BC%88%E5%85%A8%E5%B1%80%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8%EF%BC%89%E5%92%8CLDT%EF%BC%88%E5%B1%80%E9%83%A8%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8%EF%BC%89/" title="GDT（全局描述符表）和LDT（局部描述符表）"><img src="/img/ava.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GDT（全局描述符表）和LDT（局部描述符表）"/></a><div class="content"><a class="title" href="/2022/11/11/GDT%EF%BC%88%E5%85%A8%E5%B1%80%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8%EF%BC%89%E5%92%8CLDT%EF%BC%88%E5%B1%80%E9%83%A8%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8%EF%BC%89/" title="GDT（全局描述符表）和LDT（局部描述符表）">GDT（全局描述符表）和LDT（局部描述符表）</a><time datetime="2022-11-11T12:10:48.000Z" title="发表于 2022-11-11 20:10:48">2022-11-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/11/FAT%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" title="FAT文件系统"><img src="/img/ava.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="FAT文件系统"/></a><div class="content"><a class="title" href="/2022/11/11/FAT%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" title="FAT文件系统">FAT文件系统</a><time datetime="2022-11-11T01:11:16.000Z" title="发表于 2022-11-11 09:11:16">2022-11-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/10/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%B0%8F%E8%AE%B0/" title="汇编语言小记"><img src="/img/ava.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="汇编语言小记"/></a><div class="content"><a class="title" href="/2022/11/10/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%B0%8F%E8%AE%B0/" title="汇编语言小记">汇编语言小记</a><time datetime="2022-11-10T15:55:28.000Z" title="发表于 2022-11-10 23:55:28">2022-11-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By 小熊٩(๑•̀ω•́๑)۶</div><div class="footer_custom_text">请问是好小熊还是坏小熊？</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Am7x08ZeYD9VdolOddY6z2ic-gzGzoHsz',
+      appKey: '2IepgYqPE8wpNECbM8DqaDe5',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="60198" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"> </div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(function(d, w, c) {
+    w.ChatraID = 'KdhoLZYvnGE4z7fi9';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (true) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (true) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
